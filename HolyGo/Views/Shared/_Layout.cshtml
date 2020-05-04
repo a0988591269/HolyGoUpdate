@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HolyGo</title>
+    <link rel="icon" href="~/Assets/Images/Logo/HolyGo.ico" type="image/ico" />
+    <script src="https://kit.fontawesome.com/1fad495502.js" crossorigin="anonymous"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/holygo")
+</head>
+<body>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("應用程式名稱", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("首頁", "Index", "Home")</li>
+                        <li>@Html.ActionLink("關於", "About", "Home")</li>
+                        <li>@Html.ActionLink("連絡人", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>*@
+
+    <div class="menu">
+        <div class="menu_container text-right">
+            <div class="menu_close">close</div>
+            <nav class="menu_nav">
+                <ul>
+                    <div class="log_reg">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                    @*<li>@Html.ActionLink("About Us", "About", "Home")</li>*@
+                    <li>@Html.ActionLink("旅遊行程", "Index", "TravelList", new { id = "ALL" }, null)</li>
+                    <li>@Html.ActionLink("訂單管理", "Order", "User")</li>
+                    <li>@Html.ActionLink("訊息管理", "Message", "User")</li>
+                    <li>@Html.ActionLink("購物車", "Favorite", "User")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("後台", "Index", "BackStage")</li>
+                    }
+                    @*<li>@Html.ActionLink("後台", "Index", "BackStage")</li>*@
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="super_container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header_overlay"></div>
+            <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="@Url.Action("Index","Home")">Holy<span>Go</span><span>+</span></a>
+                </div>
+
+                <!-- Header Nav -->
+                <div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
+                    <nav class="main_nav">
+                        <ul class="d-flex flex-row align-items-center justify-content-center">
+                            @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                            @*<li>@Html.ActionLink("About Us", "About", "Home")</li>*@
+                            <li>@Html.ActionLink("旅遊行程", "Index", "TravelList", new { id = "ALL" }, null)</li>
+                            <li>@Html.ActionLink("訂單管理", "Order", "User")</li>
+                            <li>@Html.ActionLink("訊息管理", "Message", "User")</li>
+                            <li>@Html.ActionLink("購物車", "Favorite", "User")</li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li>@Html.ActionLink("後台", "Index", "BackStage")</li>
+                            }
+                            @*<li>@Html.ActionLink("後台", "Index", "BackStage")</li>*@
+                        </ul>
+                    </nav>
+                    <!-- <div class="add_listing text-center trans_200"><a href="#">+Add Listing</a></div> -->
+                    <div class="log_reg d-none d-lg-block">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                    <div class="hamburger">
+                        <i class="fa fa-bars trans_200"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    @RenderBody()
+
+    <!-- Footer -->
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container">
+            <div class="row mb-5 d-flex">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">About Me</h2>
+                        <p>全世界最棒的旅遊體驗與HOLYGO一起，開啟新旅程，探索世界的更多可能</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                            <li class="ftco-animate"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li class="ftco-animate"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="ftco-animate"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2">熱門連結</h2>
+                        <ul class="list-unstyled">
+                            <li>@Html.ActionLink("首頁", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                            <li>@Html.ActionLink("旅遊行程", "Index", "TravelList", new { id = "ALL" }, null)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">快速連結</h2>
+                        <ul class="list-unstyled">
+                            <li>@Html.ActionLink("帳號設定", "Index", "User")</li>
+                            <li>@Html.ActionLink("訂單管理", "Order", "User")</li>
+                            <li>@Html.ActionLink("訊息管理", "Message", "User")</li>
+                            <li>@Html.ActionLink("購物車", "Favorite", "User")</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><i class="fa fa-map-marker mr-1"></i><span class="text">32651   桃園市楊梅區秀才路851號</span></li>
+                                <li><a href="#"><i class="fa fa-phone mr-1"></i><span class="text">(03)485-5368</span></a></li>
+                                <li><a href="https://thmr.wda.gov.tw/"><i class="fa fa-envelope  mr-1"></i><span class="text">https://thmr.wda.gov.tw/</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script> HolyGo All rights reserved. | This template is made with<i class="icon-heart" aria-hidden="true"></i> by <a href="#" target="_blank">HolyGo</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/js")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
